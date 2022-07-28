@@ -7,7 +7,7 @@ licenselink = "https://github.com/roninro/hugo-theme-puppet/blob/master/LICENSE"
 description = ""
 homepage = "https://github.com/roninro/hugo-theme-puppet"
 # If you have a running demo of the theme.
-demosite = ""
+demosite = "https://hugo-theme-puppet.netlify.app/"
 
 tags = ["blog", "simple", "clean"]
 features = ["responsive", "blog", "simple", "search"]

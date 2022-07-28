@@ -1,0 +1,11 @@
+[build]
+  publish = "exampleSite/public"
+  command = "hugo -s exampleSite"
+
+[build.environment]
+  HUGO_THEME = "repo"
+  HUGO_THEMESDIR = "/opt/build"
+  HUGO_VERSION = "0.101.0"
+
+[context.deploy-preview]
+  command = "hugo -s exampleSite -b $DEPLOY_PRIME_URL"

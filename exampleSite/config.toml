@@ -73,6 +73,10 @@ keywords = "blog,developer,personal"
 img_home = "/img/home-bg.jpg"
 img_404 = "/img/404-bg.jpg"
 
+custom_js = []
+custom_css = [] # ["css/custom.css"]  Add your file to assets folder  [assets/css/custom.css]
+
+
 [params.sidebar]
 enable = true
 avatar = "/img/home-bg.jpg"

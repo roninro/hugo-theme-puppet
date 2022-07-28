@@ -1,10 +1,12 @@
 baseURL = "http://localhost:1313/"
 title = "Puppet Theme"
-author = "Roninro"
+
 copyright = ""
 paginate = 3
 languageCode = "en"
-DefaultContentLanguage = "en"
+defaultContentLanguage = "en"
+
+hasCJKLanguage = false
 enableInlineShortcodes = true
 enableEmoji = true
 # prevent build failures when using Hugo's Instagram shortcode due to deprecated Instagram API.
@@ -15,6 +17,7 @@ theme = "puppet"
 themesDir = "../.."
 
 disqusShortname = ""
+googleAnalytics = ""
 
 [outputs]
 home = ["HTML", "JSON"]
@@ -64,8 +67,8 @@ weight = 30
 
 
 [params]
-author = "John Doe"
-description = "John Doe's personal website"
+author = "Puppet"
+description = "A simple and clean theme for Hugo"
 keywords = "blog,developer,personal"
 img_home = "/img/home-bg.jpg"
 img_404 = "/img/404-bg.jpg"

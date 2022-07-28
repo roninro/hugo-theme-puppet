@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {{ $title := .Title }}
+  {{ if gt (len $title) 0 }}
+  {{ $title = print $title " | " .Site.Title }}
+  {{ else }}
+  {{ $title = .Site.Title }}
+  {{ end }}
+
+  <title>{{ $title }}</title>
+
+  {{ with .Site.Params.author }}
+  <meta name="author" content="{{ . }}">{{ end }}
+  <meta name="description" content="{{ .Description | default (.Summary | default .Site.Params.description ) }}">
+  <meta name="keywords" content="{{ (delimit .Keywords " ,") | default .Site.Params.keywords }}">
+
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ template "_internal/opengraph.html" . }}
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css">
+
+  {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction) "includePaths" (slice
+  "sass")) }}
+  {{ $style := resources.Get "sass/main.scss" | resources.ToCSS $options }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
+</head>
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+  {{ $header_img := .Param "header_img" }}
+  {{ if .IsHome }}
+  {{ $header_img = .Site.Params.img_home }}
+  {{ else if eq .Kind "404" }}
+  {{ $header_img = .Site.Params.img_404 }}
+  {{ end }}
+  {{ if $header_img }}
+  {{ .Scratch.Set "header_img" $header_img }}
+  {{ end }}
+
+  {{ if and .IsPage (gt .WordCount 400 ) (.Params.toc) }}
+  {{ .Scratch.Set "toc" true }}
+  {{ end }}
+
+  <!-- Nav -->
+  {{ partial "nav.html" . }}
+  {{ partial "search.html" . }}
+
+  <!-- Page Header -->
+  {{ partial "intro-header.html" . }}
+
+  {{ block "main" . }}
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      {{ if eq .Site.Params.sidebar.enable false }}
+
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
+      postlist-container">
+        {{ block "container" . }}{{ end }}
+      </div>
+      <!-- Sidebar Container -->
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
+      sidebar-container">
+        <!-- Featured Tags -->
+        {{ partial "featured-tags.html" }}
+        <!-- Friends Blog -->
+        {{ partial "friends.html" . }}
+      </div>
+
+      {{ else }}
+      <!-- USE SIDEBAR -->
+      <!-- PostList Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12
+      col-xs-12 postlist-container">
+        {{ block "container" . }}{{ end }}
+      </div>
+      <!-- Sidebar Container -->
+      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12
+      col-xs-12 sidebar-container">
+
+        <!-- Featured Tags -->
+        {{ partial "featured-tags.html" . }}
+        {{ partial "short-about.html" . }}
+        <!-- Friends Blog -->
+        {{ partial "friends.html" . }}
+
+      </div>
+      {{ end }}
+
+    </div>
+  </div>
+
+  {{ end }}
+
+  {{ partial "footer.html" . }}
+</body>
+
+</html>

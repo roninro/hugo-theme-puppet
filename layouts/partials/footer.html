@@ -1,0 +1,147 @@
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <!-- SNS Link -->
+        {{ partial "sns-links.html" (dict "center" true "social" .Site.Params.social ) }}
+        <p class="copyright text-muted">
+          Copyright &copy; {{ .Site.Title }} {{ now.Format "2006" }}
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+<!-- Custom Theme JavaScript -->
+{{ $mainJs := resources.Get "js/hux-blog.js" | minify | fingerprint }}
+<script src="{{ $mainJs.Permalink }}"></script>
+
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+{{ if eq .Type "archive" }}
+{{ $archiveJS := resources.Get "js/archive.js" | minify | fingerprint }}
+<script src='{{ $archiveJS.Permalink }}'></script>
+{{ end }}
+
+{{ $toc := .Scratch.Get "toc" }}
+{{ if $toc }}
+<script type="text/javascript">
+  function generateCatalog(selector) {
+    _containerSelector = 'div.post-container'
+    // init
+    var P = $(_containerSelector), a, n, t, l, i, c;
+    a = P.find('h1,h2,h3,h4,h5,h6');
+    // clean
+    $(selector).html('')
+    // appending
+    a.each(function () {
+      n = $(this).prop('tagName').toLowerCase();
+      i = "#" + $(this).prop('id');
+      t = $(this).text();
+      c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+      l = $('<li class="' + n + '_nav"></li>').append(c);
+      $(selector).append(l);
+    });
+    return true;
+  }
+
+  generateCatalog(".catalog-body");
+
+  // toggle side catalog
+  $(".catalog-toggle").click((function (e) {
+    e.preventDefault();
+    $('.side-catalog').toggleClass("fold")
+  }))
+</script>
+
+{{ $navJs := resources.Get "js/jquery.nav.js" | minify | fingerprint }}
+<script type="text/javascript" src='{{ $navJs.Permalink }}'></script>
+<script>
+    /*
+   * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+   * Fork by Hux to support padding
+   */
+   $(document).ready( function () {
+    $('.catalog-body').onePageNav({
+      currentClass: "active",
+      changeHash: !1,
+      easing: "swing",
+      filter: "",
+      scrollSpeed: 700,
+      scrollOffset: 0,
+      scrollThreshold: .2,
+      begin: null,
+      end: null,
+      scrollChange: null,
+      padding: 80
+    });
+  });
+</script>
+
+
+{{ end }}
+
+<!-- Simple Jekyll Search -->
+<script>
+  // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+  function htmlDecode(input) {
+      var e = document.createElement('textarea');
+      e.innerHTML = input;
+      // handle case of empty input
+      return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  }
+
+  SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/index.json',
+      searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+      noResultsText: 'No results',
+      limit: 50,
+      fuzzy: false,
+      // a hack to get escaped subtitle unescaped. for some reason, 
+      // post.subtitle w/o escape filter nuke entire search.
+      templateMiddleware: function (prop, value, template) {
+          if (prop === 'subtitle' || prop === 'title') {
+              if (value.indexOf("code")) {
+                  return htmlDecode(value);
+              } else {
+                  return value;
+              }
+          }
+      }
+  });
+
+  $(document).ready(function () {
+      var $searchPage = $('.search-page');
+      var $searchOpen = $('.search-icon');
+      var $searchClose = $('.search-icon-close');
+      var $searchInput = $('#search-input');
+      var $body = $('body');
+
+      $searchOpen.on('click', function (e) {
+          e.preventDefault();
+          $searchPage.toggleClass('search-active');
+          var prevClasses = $body.attr('class') || '';
+          setTimeout(function () {
+              $body.addClass('no-scroll');
+          }, 400)
+
+          if ($searchPage.hasClass('search-active')) {
+              $searchClose.on('click', function (e) {
+                  e.preventDefault();
+                  $searchPage.removeClass('search-active');
+                  $body.attr('class', prevClasses);  // from closure 
+              });
+              $searchInput.focus();
+          }
+      });
+  });
+</script>

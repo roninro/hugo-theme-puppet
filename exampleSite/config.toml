@@ -1,0 +1,103 @@
+baseURL = "https://gohugo.io"
+title = "Puppet Theme"
+author = "Roninro"
+copyright = ""
+paginate = 3
+languageCode = "en"
+DefaultContentLanguage = "en"
+enableInlineShortcodes = true
+enableEmoji = true
+# prevent build failures when using Hugo's Instagram shortcode due to deprecated Instagram API.
+# See https://github.com/gohugoio/hugo/issues/7228#issuecomment-714490456
+ignoreErrors = ["error-remote-getjson"]
+
+theme = "puppet"
+themesDir = "../.."
+
+disqusShortname = ""
+
+[outputs]
+home = ["HTML", "JSON"]
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[markup]
+[markup.highlight]
+codeFences = true
+guessSyntax = true
+lineNos = true
+lineNumbersInTable = false
+style = "dracula"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[menu]
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = -100
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 100
+[[menu.main]]
+identifier = "archive"
+name = "Archive"
+url = "/archive/"
+weight = 10
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 20
+[[menu.main]]
+identifier = "categories"
+name = "Categories"
+url = "/categories/"
+weight = 30
+
+
+[params]
+author = "John Doe"
+description = "John Doe's personal website"
+keywords = "blog,developer,personal"
+img_home = "/img/home-bg.jpg"
+img_404 = "/img/404-bg.jpg"
+
+[params.sidebar]
+enable = true
+avatar = "/img/home-bg.jpg"
+bio = "John Doe's personal website"
+
+[params.social]
+rss_enable = true
+twitter = "johndoe"
+facebook = "johndoe"
+zhihu = "johndoe"
+weibo = "johndoe"
+github = "johndoe"
+linkedin = "johndoe"
+
+[[params.friends]]
+name = "John Doe"
+url = "https://gohugo.io"
+
+[[params.friends]]
+name = "John Doe"
+url = "https://gohugo.io"
+
+# See https://giscus.app/
+[params.giscus]
+enable = false
+repo = ""
+repo_id = ""
+category = ""
+category_id = ""
+input_position = ""
+theme = "light"

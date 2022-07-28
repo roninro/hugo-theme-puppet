@@ -1,0 +1,78 @@
+{{ $social := .social }}
+
+{{ if .center }}
+<ul class="list-inline text-center">
+{{ else }}
+<ul class="list-inline">
+{{ end}}
+  {{ with $social.rss_enable }}
+  <li>
+    <a href="/feed.xml">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {{ end }}
+  {{ with $social.twitter }}
+  <li>
+    <a href="https://twitter.com/{{ . }}">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {{ end }}
+  {{ with $social.zhihu }}
+  <li>
+    <a target="_blank" href="https://www.zhihu.com/people/{{ . }}">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa  fa-stack-1x fa-inverse">知</i>
+      </span>
+    </a>
+  </li>
+  {{ end }}
+  {{ with $social.weibo }}
+  <li>
+    <a target="_blank" href="http://weibo.com/{{ . }}">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {{ end }}
+  {{ with $social.facebook }}
+  <li>
+    <a target="_blank" href="https://www.facebook.com/{{ . }}">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {{ end }}
+  {{ with $social.github }}
+  <li>
+    <a target="_blank" href="https://github.com/{{ . }}">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {{ end }}
+  {{ with $social.linkedin }}
+  <li>
+    <a target="_blank" href="https://www.linkedin.com/in/{{ . }}">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {{ end }}
+</ul>

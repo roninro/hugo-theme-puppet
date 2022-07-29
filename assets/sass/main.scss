@@ -4,7 +4,6 @@
 @import "_side-catalog.scss";
 @import "_search.scss";
 
-
 // Global Components
 
 body {
@@ -271,6 +270,38 @@ samp {
     // I can not understand this but this made anchor always in the same line as title
     position: absolute;
     text-decoration: none !important;
+  }
+
+  .anchorjs-link {
+    font-family: serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    padding-left: 0.375em;
+    font-size: 0.9em;
+    margin-top: 0.1em;
+    opacity: 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: "liga";
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+    &:after {
+      content: "¶";
+    }
+  }
+
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+    }
   }
 }
 

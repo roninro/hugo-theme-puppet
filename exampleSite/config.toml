@@ -20,7 +20,7 @@ disqusShortname = ""
 googleAnalytics = ""
 
 [outputs]
-home = ["HTML", "JSON"]
+home = ["HTML", "JSON", "RSS"]
 
 [taxonomies]
 category = "categories"
@@ -59,12 +59,6 @@ identifier = "tags"
 name = "Tags"
 url = "/tags/"
 weight = 20
-[[menu.main]]
-identifier = "categories"
-name = "Categories"
-url = "/categories/"
-weight = 30
-
 
 [params]
 author = "Puppet"

@@ -85,7 +85,6 @@
   });
 </script>
 
-
 {{ end }}
 
 <!-- Simple Jekyll Search -->
@@ -149,3 +148,6 @@
 {{ if not .Site.IsServer }}
   {{ template "_internal/google_analytics.html" . }}
 {{ end }}
+
+{{ $zoom_js := resources.Get "zoomjs/zoom.js" | resources.Minify }}
+<script src="{{ $zoom_js.RelPermalink }}"></script>

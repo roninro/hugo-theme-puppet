@@ -33,6 +33,10 @@
   {{ $style := resources.Get "sass/main.scss" | resources.ToCSS $options }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
 
+  {{ $zoom_css := resources.Get "zoomjs/zoom.css" | resources.Minify }}
+  <link rel="stylesheet" href="{{ $zoom_css.Permalink }}">
+
+
   {{ range .Site.Params.custom_css -}}
   {{ $custom_template := resources.Get . }}
   {{ if $custom_template }}
@@ -69,7 +73,7 @@
   {{ .Scratch.Set "header_img" $header_img }}
   {{ end }}
 
-  {{ if and .IsPage (gt .WordCount 400 ) (.Params.toc) }}
+  {{ if and .IsPage (.Params.toc) }}
   {{ .Scratch.Set "toc" true }}
   {{ end }}
 

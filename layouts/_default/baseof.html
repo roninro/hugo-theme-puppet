@@ -7,10 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   {{ $title := .Title }}
-  {{ if gt (len $title) 0 }}
-  {{ $title = print $title " | " .Site.Title }}
-  {{ else }}
-  {{ $title = .Site.Title }}
+  {{ if not .IsHome }}
+    {{ $title = printf "%s | %s" .Title .Site.Title }}
   {{ end }}
 
   <title>{{ $title }}</title>

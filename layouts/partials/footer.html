@@ -20,18 +20,18 @@
 
 <!-- Custom Theme JavaScript -->
 {{ $mainJs := resources.Get "js/hux-blog.js" | minify | fingerprint }}
-<script src="{{ $mainJs.Permalink }}"></script>
+<script src="{{ $mainJs.RelPermalink }}"></script>
 
 <!-- Simple Jekyll Search -->
 <script src="/js/simple-jekyll-search.min.js"></script>
 
 {{ $searchJs := resources.Get "js/search.js" | minify | fingerprint }}
-<script src="{{ $searchJs.Permalink }}"></script>
+<script src="{{ $searchJs.RelPermalink }}"></script>
 
 
 {{ if eq .Type "archive" }}
 {{ $archiveJS := resources.Get "js/archive.js" | minify | fingerprint }}
-<script src='{{ $archiveJS.Permalink }}'></script>
+<script src='{{ $archiveJS.RelPermalink }}'></script>
 {{ end }}
 
 {{ $toc := .Scratch.Get "toc" }}
@@ -66,7 +66,7 @@
 </script>
 
 {{ $navJs := resources.Get "js/jquery.nav.js" | minify | fingerprint }}
-<script type="text/javascript" src='{{ $navJs.Permalink }}'></script>
+<script type="text/javascript" src='{{ $navJs.RelPermalink }}'></script>
 <script>
    $(document).ready( function () {
     $('.catalog-body').onePageNav({
@@ -87,10 +87,6 @@
 
 {{ end }}
 
-<!-- Simple Jekyll Search -->
-<script>
-
-</script>
 
 {{ if not .Site.IsServer }}
 {{ template "_internal/google_analytics.html" . }}

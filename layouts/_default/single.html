@@ -16,7 +16,7 @@
         <ul class="pager">
           {{ with .Prev }}
           <li class="previous">
-            <a href="{{ .Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">
+            <a href="{{ .RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">
               Previous<br>
               <span>{{ .Title }}</span>
             </a>
@@ -24,7 +24,7 @@
           {{ end }}
           {{ with .Next }}
           <li class="next">
-            <a href="{{ .Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">
+            <a href="{{ .RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">
               Next<br>
               <span>{{ .Title }}</span>
             </a>

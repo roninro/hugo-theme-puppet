@@ -19,7 +19,7 @@
         <div class="post-heading">
           <div class="tags">
             {{ range (.GetTerms "tags") }}
-            <a class="tag" href="{{ .Page.Permalink }}" title="{{ .LinkTitle}}">{{ .LinkTitle }}</a>
+            <a class="tag" href="{{ .Page.RelPermalink }}" title="{{ .LinkTitle}}">{{ .LinkTitle }}</a>
             {{ end }}
           </div>
           <h1>{{ .Title }}</h1>

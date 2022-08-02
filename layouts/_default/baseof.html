@@ -14,7 +14,8 @@
   <title>{{ $title }}</title>
 
   {{ with .Site.Params.author }}
-  <meta name="author" content="{{ . }}">{{ end }}
+  <meta name="author" content="{{ . }}">
+  {{ end }}
   <meta name="description" content="{{ .Description | default (.Summary | default .Site.Params.description ) }}">
   <meta name="keywords" content="{{ (delimit .Keywords " ,") | default .Site.Params.keywords }}">
 
@@ -34,7 +35,6 @@
   {{ $zoom_css := resources.Get "zoomjs/zoom.css" | resources.Minify }}
   <link rel="stylesheet" href="{{ $zoom_css.RelPermalink }}">
 
-
   {{ range .Site.Params.custom_css -}}
   {{ $custom_template := resources.Get . }}
   {{ if $custom_template }}
@@ -42,6 +42,9 @@
   <link rel="stylesheet" href="{{ $custom_style.RelPermalink }}">
   {{ end }}
   {{ end }}
+
+  <script src="/js/lazysizes.min.js"></script>
+
   <!-- custom js -->
   {{ range .Site.Params.custom_js -}}
   {{ $custom_template := resources.Get . }}

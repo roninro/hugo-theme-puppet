@@ -1,6 +1,6 @@
 <figure>
   <a class="paragraph-image">
-    <img src="{{ .Destination | safeURL }}" data-action="zoom" alt="{{ .Text }}" {{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+    <img data-src="{{ .Destination | safeURL }}" data-action="zoom" alt="{{ .Text }}" {{ with .Title }} title="{{ . }}"{{ end }} class="lazyload">
   </a>
   {{ with .Title }}
   <figcaption class="image-caption">

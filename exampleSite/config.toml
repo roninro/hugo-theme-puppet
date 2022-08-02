@@ -74,7 +74,7 @@ custom_css = [] # ["css/custom.css"]  Add your file to assets folder  [assets/cs
 [params.sidebar]
 enable = true
 avatar = "/img/home-bg.jpg"
-bio = "John Doe's personal website"
+bio = "a personal website"
 
 [params.social]
 rss_enable = true
@@ -95,10 +95,12 @@ url = "https://gohugo.io"
 
 # See https://giscus.app/
 [params.giscus]
-enable = false
-repo = ""
-repo_id = ""
-category = ""
-category_id = ""
-input_position = ""
-theme = "light"
+enable = true
+repo = "roninro/hugo-theme-puppet"
+repo_id = "R_kgDOHuvyhw"
+category = "General"
+category_id = "DIC_kwDOHuvyh84CQjDo"
+input_position = "top"
+theme = "light_tritanopia"
+lang = "en"
+

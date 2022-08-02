@@ -18,7 +18,8 @@
   data-emit-metadata="0" 
   data-input-position="{{ $giscus.input_position | default "top" }}"
   data-theme="{{ $giscus.theme | default "light" }}"
-  crossorigin="anonymous" 
+  data-lang="{{ $giscus.lang | default "en" }}"
+  crossorigin="anonymous"
   async>
   </script>
 {{ end }}

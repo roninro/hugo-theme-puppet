@@ -6,6 +6,10 @@
 
 [Demo](https://hugo-theme-puppet.netlify.app/)
 
+## Screenshot
+
+![Home](/images/screenshot.png)
+
 ## Features
 
 - [x] Responsive

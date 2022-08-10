@@ -2,15 +2,15 @@
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
 name = "Puppet"
-license = "MIT"
+license = "Apache"
 licenselink = "https://github.com/roninro/hugo-theme-puppet/blob/master/LICENSE"
-description = ""
+description = "a simple and clean theme for Hugo"
 homepage = "https://github.com/roninro/hugo-theme-puppet"
 # If you have a running demo of the theme.
 demosite = "https://hugo-theme-puppet.netlify.app/"
 
-tags = ["blog", "simple", "clean"]
-features = ["responsive", "blog", "simple", "search"]
+tags = ["Blog", "Responsive", "Light"]
+features = ["responsive", "comments", "sidebar", "search"]
 min_version = "0.101.0"
 
 [author]
@@ -19,6 +19,5 @@ min_version = "0.101.0"
 
 # If porting an existing theme
 [original]
-  name = ""
-  homepage = ""
-  repo = ""
+  name = "huxblog"
+  homepage = "https://github.com/Huxpro/huxpro.github.io"

@@ -6,6 +6,20 @@
 
 [Demo](https://hugo-theme-puppet.netlify.app/)
 
+## Features
+
+- [x] Responsive
+- [x] SEO
+- [x] Table of Contents
+- [x] Image Zoom
+- [x] Syntax Highlighting
+- [x] Search
+- [x] Comments
+- [x] Google Analytics
+- [x] Custom CSS and JS
+- [x] Custom 404 Page
+- [x] Custom Favicon
+
 ## Installation
 
 ```bash
@@ -28,23 +42,6 @@ add `archive/_index.md` to your `content` folder. This file will be used as the 
 
 like the archive page, add `about/_index.md` to your `content` folder.
 
-## Front Matter example
-
-see [default.md](archetypes/default.md)
-
-```markdown
-+++
-title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
-draft: true
-header_img: ""
-short: false
-toc = true
-tags = []
-categories = []
-+++
-```
-
 ## License
 
-[MIT](LICENSE)
+[Apache](LICENSE)

@@ -44,18 +44,18 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         {{ if eq (.Param "short") true }}
         <div class="site-heading" id="tag-heading">
-          {{ else }}
-          <div class="site-heading">
-            {{ end }}
-            <h1>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</h1>
-            {{ $description := .Description }}
-            {{ if .IsHome }}
-            {{ $description = .Site.Params.description }}
-            {{ end }}
-            <span class="subheading">{{ $description }}</span>
-          </div>
+        {{ else }}
+        <div class="site-heading">
+        {{ end }}
+          <h1>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</h1>
+          {{ $description := .Description }}
+          {{ if .IsHome }}
+          {{ $description = .Site.Params.description }}
+          {{ end }}
+          <span class="subheading">{{ $description }}</span>
         </div>
       </div>
     </div>
+  </div>
 </header>
 {{ end }}

@@ -58,6 +58,12 @@
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
   {{ end -}}
 
+  {{ if .Site.Params.useFaviconGenerator }}
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  {{ end }}
 </head>
 
 <!-- hack iOS CSS :active style -->
@@ -100,7 +106,7 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
       sidebar-container">
         <!-- Featured Tags -->
-        {{ partial "featured-tags.html" }}
+        {{ partial "featured-tags.html" . }}
         <!-- Friends Blog -->
         {{ partial "friends.html" . }}
       </div>

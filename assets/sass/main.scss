@@ -3,6 +3,7 @@
 @import "_sidebar.scss";
 @import "_side-catalog.scss";
 @import "_search.scss";
+@import "_highlight.scss";
 
 // Global Components
 
@@ -748,7 +749,12 @@ samp {
 .post-content-preview {
   font-size: 13px;
   font-style: italic;
-  color: $brand-gray;
+  color: $brand-gray !important;
+
+  p {
+    margin: 0;
+  }
+
   &:hover {
     color: $brand-primary;
   }

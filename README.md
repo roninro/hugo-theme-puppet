@@ -8,7 +8,7 @@
 
 ## Screenshot
 
-![Home](/images/screenshot.png)
+![Home](https://raw.githubusercontent.com/roninro/hugo-theme-puppet/master/images/screenshot.png)
 
 ## Features
 

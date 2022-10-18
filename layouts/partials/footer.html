@@ -6,7 +6,11 @@
         <!-- SNS Link -->
         {{ partial "sns-links.html" (dict "center" true "social" .Site.Params.social ) }}
         <p class="copyright text-muted">
+        {{- if site.Copyright }}
+          {{ site.Copyright | markdownify }}
+        {{- else }}
           Copyright &copy; {{ .Site.Title }} {{ now.Format "2006" }}
+        {{- end }}  
           <br>
           Powered by <a href="https://gohugo.io">Hugo</a>
         </p>

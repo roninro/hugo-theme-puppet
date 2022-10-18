@@ -22,7 +22,7 @@
   {{ template "_internal/twitter_cards.html" . }}
   {{ template "_internal/opengraph.html" . }}
 
-  <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}"  crossorigin="anonymous">
   <!-- Hux change font-awesome CDN to qiniu -->
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
     type="text/css">
@@ -43,7 +43,7 @@
   {{ end }}
   {{ end }}
 
-  <script src="/js/lazysizes.min.js"></script>
+  <script src={{ "js/lazysizes.min.js" | relURL }}></script>
 
   <!-- custom js -->
   {{ range .Site.Params.custom_js -}}
@@ -59,11 +59,17 @@
   {{ end -}}
 
   {{ if .Site.Params.useFaviconGenerator }}
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  {{ end }}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
+  <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+  {{ else }}
+  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+  <link rel="shortcut icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
+  <link rel="icon" href="{{ "logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
+{{ end }}
+
 </head>
 
 <!-- hack iOS CSS :active style -->
@@ -77,7 +83,7 @@
   {{ $header_img = .Site.Params.img_404 }}
   {{ end }}
   {{ if $header_img }}
-  {{ .Scratch.Set "header_img" $header_img }}
+  {{ .Scratch.Set "header_img" ( $header_img | relURL ) }}
   {{ end }}
 
   {{ if and .IsPage (.Params.toc) }}

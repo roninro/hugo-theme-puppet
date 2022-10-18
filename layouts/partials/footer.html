@@ -19,17 +19,17 @@
   </div>
 </footer>
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src={{ "js/jquery.min.js" | relURL }}></script>
+<script src={{"js/bootstrap.min.js" | relURL }} crossorigin="anonymous"></script>
 
 <!-- Custom Theme JavaScript -->
 {{ $mainJs := resources.Get "js/hux-blog.js" | minify | fingerprint }}
 <script src="{{ $mainJs.RelPermalink }}"></script>
 
 <!-- Simple Jekyll Search -->
-<script src="/js/simple-jekyll-search.min.js"></script>
+<script src={{ "js/simple-jekyll-search.min.js" | relURL }}></script>
 
-{{ $searchJs := resources.Get "js/search.js" | minify | fingerprint }}
+{{ $searchJs := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint }}
 <script src="{{ $searchJs.RelPermalink }}"></script>
 
 

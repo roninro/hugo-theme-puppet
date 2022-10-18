@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "http://localhost:1313/subdir"
 title = "Puppet"
 
 theme = "puppet"
@@ -72,8 +72,8 @@ weight = 100
 author = "Puppet"
 description = "A simple and clean theme for Hugo"
 keywords = "blog,developer,personal"
-img_home = "/img/home-bg.jpg"
-img_404 = "/img/404-bg.jpg"
+img_home = "img/home-bg.jpg"
+img_404 = "img/404-bg.jpg"
 
 useFaviconGenerator = true
 
@@ -82,7 +82,7 @@ custom_css = [] # ["css/custom.css"]  Add your file to assets folder  [assets/cs
 
 [params.sidebar]
 enable = true
-avatar = "/img/home-bg.jpg"
+avatar = "img/home-bg.jpg"
 bio = "a personal website"
 
 [params.social]

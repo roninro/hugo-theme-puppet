@@ -9,7 +9,7 @@ function htmlDecode(input) {
 SimpleJekyllSearch({
   searchInput: document.getElementById('search-input'),
   resultsContainer: document.getElementById('search-results'),
-  json: '/index.json',
+  json: '{{ "index.json" | relURL }}',
   searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
   noResultsText: 'No results',
   limit: 50,

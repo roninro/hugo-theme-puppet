@@ -94,6 +94,7 @@ facebook = "johndoe"
 zhihu = "johndoe"
 weibo = "johndoe"
 github = "johndoe"
+gitlab = "johndoe"
 linkedin = "johndoe"
 
 [[params.friends]]

@@ -90,6 +90,7 @@ bio = "a personal website"
 [params.social]
 rss_enable = true
 twitter = "johndoe"
+mastodon = "mastodon.social/johndoe"
 facebook = "johndoe"
 zhihu = "johndoe"
 weibo = "johndoe"

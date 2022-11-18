@@ -25,6 +25,16 @@
     </a>
   </li>
   {{ end }}
+  {{ with $social.mastodon }}
+  <li>
+    <a rel="me" href="https://{{ . }}">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="mdi mdi-mastodon fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {{ end }}
   {{ with $social.zhihu }}
   <li>
     <a target="_blank" href="https://www.zhihu.com/people/{{ . }}">

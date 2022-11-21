@@ -13,7 +13,7 @@ categories = [
     "syntax",
 ]
 series = ["Themes Guide"]
-aliases = ["migrate-from-jekyl"]
+aliases = ["migrate-from-jekyll"]
 toc = true
 +++
 

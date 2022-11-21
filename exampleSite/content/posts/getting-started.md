@@ -14,7 +14,7 @@ Puppet is a responsive, simple and clean [Hugo](https://gohugo.io/) theme based 
 
 ## Install Hugo
 
-Make sure you have installed the lastest version of [Hugo-extented](https://gohugo.io/getting-started/installing/).
+Make sure you have installed the latest version of [Hugo-extented](https://gohugo.io/getting-started/installing/).
 
 ## Create a New Site
 

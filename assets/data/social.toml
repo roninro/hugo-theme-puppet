@@ -221,7 +221,7 @@ text = "知"
 icon = "fab"
 
 [douban]
-weight = 44
+weight = 45
 format = "https://www.douban.com/people/%v"
 text = "豆"
 icon = "fab"
@@ -282,6 +282,11 @@ weight = 58
 format = "https://dev.to/%v"
 icon = "fab fa-dev"
 
+[bilibili]
+weight = 66
+icon = "fab fa-bilibili"
+format = "https://space.bilibili.com/%v"
+
 [discord]
 weight = 63
 format = "https://discordapp.com/users/%v"
@@ -296,7 +301,6 @@ icon = "fab fa-discord"
 weight = 66
 format = "https://orcid.org/%v"
 icon = "fab fa-orcid"
-
 
 [kaggle]
 weight = 68

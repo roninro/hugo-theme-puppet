@@ -23,6 +23,8 @@
 - [x] Custom CSS and JS
 - [x] Custom 404 Page
 - [x] Custom Favicon
+- [x] Custom Social Icons
+
 
 ## Installation
 
@@ -37,7 +39,6 @@ To use it, copy the [config.toml](exampleSite/config.toml) in the root directory
 
 ## Content
 
-
 ### Archive Page
 
 add `archive/_index.md` to your `content` folder. This file will be used as the archive page.
@@ -45,6 +46,28 @@ add `archive/_index.md` to your `content` folder. This file will be used as the 
 ### About Page
 
 like the archive page, add `about/_index.md` to your `content` folder.
+
+
+## Social Icons
+
+The default data of social links is located in [social.toml](assets/data/social.toml)
+
+You can directly set your `id` to get a default social link icon
+
+```toml
+[params.social]
+mastodon = "@xxxxx"
+```
+Or You can set more options through a dict:
+
+```toml
+[params.social.mastodon]
+weight = 56
+icon = "fab fa-mastodon"
+format = "https://mastodon.social/%v"
+id = "johndoe"
+url = ""
+```
 
 ## License
 

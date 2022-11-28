@@ -7,32 +7,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   {{ $title := .Title }}
-  {{ if not .IsHome }}
+  {{- if not .IsHome }}
     {{ $title = printf "%s | %s" .Title .Site.Title }}
-  {{ end }}
+  {{ end -}}
 
   <title>{{ $title }}</title>
 
-  {{ with .Site.Params.author }}
+  {{- with .Site.Params.author }}
   <meta name="author" content="{{ . }}">
-  {{ end }}
+  {{ end -}}
   <meta name="description" content="{{ .Description | default (.Summary | default .Site.Params.description ) }}">
   <meta name="keywords" content="{{ (delimit .Keywords " ,") | default .Site.Params.keywords }}">
 
   {{ template "_internal/twitter_cards.html" . }}
   {{ template "_internal/opengraph.html" . }}
-
   <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}"  crossorigin="anonymous">
-  <!-- Hux change font-awesome CDN to qiniu -->
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
-    type="text/css">
+  <!-- font-awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
 
   {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction) "includePaths" (slice
   "sass")) }}
-  {{ $style := resources.Get "sass/main.scss" | resources.ToCSS $options }}
+  {{- $style := resources.Get "sass/main.scss" | resources.ToCSS $options -}}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 
-  {{ $zoom_css := resources.Get "zoomjs/zoom.css" | resources.Minify }}
+  {{ $zoom_css := resources.Get "zoomjs/zoom.css" | resources.Minify -}}
   <link rel="stylesheet" href="{{ $zoom_css.RelPermalink }}">
 
   {{ range .Site.Params.custom_css -}}
@@ -41,18 +39,18 @@
   {{ $custom_style := $custom_template | resources.ToCSS | resources.Minify }}
   <link rel="stylesheet" href="{{ $custom_style.RelPermalink }}">
   {{ end }}
-  {{ end }}
+  {{- end -}}
 
   <script src={{ "js/lazysizes.min.js" | relURL }}></script>
 
   <!-- custom js -->
-  {{ range .Site.Params.custom_js -}}
+  {{- range .Site.Params.custom_js -}}
   {{ $custom_template := resources.Get . }}
   {{ if $custom_template }}
   {{ $custom_js := $custom_template | resources.Minify | resources.Fingerprint }}
   <script defer src="{{ $custom_js.RelPermalink }}"></script>
   {{ end }}
-  {{ end }}
+  {{ end -}}
 
   {{ range .AlternativeOutputFormats -}}
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
@@ -75,20 +73,19 @@
 <!-- hack iOS CSS :active style -->
 
 <body ontouchstart="">
-
-  {{ $header_img := .Param "header_img" }}
-  {{ if .IsHome }}
+  {{- $header_img := .Param "header_img" -}}
+  {{- if .IsHome -}}
   {{ $header_img = .Site.Params.img_home }}
-  {{ else if eq .Kind "404" }}
+  {{- else if eq .Kind "404" -}}
   {{ $header_img = .Site.Params.img_404 }}
-  {{ end }}
-  {{ if $header_img }}
+  {{- end -}}
+  {{- if $header_img -}}
   {{ .Scratch.Set "header_img" ( $header_img | relURL ) }}
-  {{ end }}
+  {{- end -}}
 
-  {{ if and .IsPage (.Params.toc) }}
+  {{- if and .IsPage (.Params.toc) }}
   {{ .Scratch.Set "toc" true }}
-  {{ end }}
+  {{ end -}}
 
   <!-- Nav -->
   {{ partial "nav.html" . }}

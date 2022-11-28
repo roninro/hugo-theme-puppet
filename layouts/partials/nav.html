@@ -1,8 +1,8 @@
-{{ $header_img := .Scratch.Get "header_img" }}
+{{ $header_img := .Scratch.Get "header_img" -}}
 {{ $navStyle := "invert" }}
-{{ with $header_img }}
+{{- with $header_img -}}
 {{ $navStyle = "" }}
-{{ end }}
+{{- end -}}
 
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top {{ $navStyle }}">
   <div class="container-fluid">

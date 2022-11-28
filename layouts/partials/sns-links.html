@@ -1,88 +1,46 @@
-{{ $social := .social }}
+{{- $socialMap := resources.Get "data/social.toml" | transform.Unmarshal -}}
+{{ $socialList := slice }}
+{{- range $key, $value := .social -}}
+  {{ if $value }}
+  {{- $social := $key | lower | index $socialMap | default dict -}}
+  {{- if reflect.IsMap $value -}}
+    {{- $social = merge $social $value -}}
 
-{{ if .center }}
+  {{- else if and $social (ne $value true)  -}}
+    {{ $social = merge $social (dict "id" $value) }}
+    
+  {{- else if $value -}}
+  {{- else -}}
+  {{ $social = dict }}
+  {{- end -}}
+  {{- with $social -}}
+  {{ $socialList = $socialList | append (dict "title" $key | merge $social) }}
+  {{- end -}}
+
+  {{ end }}
+{{- end -}}
+
+{{- if .center -}}
 <ul class="list-inline text-center">
-{{ else }}
+{{- else -}}
 <ul class="list-inline">
-{{ end}}
-  {{ with $social.rss_enable }}
-  <li>
-    <a href={{"index.xml" | relURL }}>
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-  </li>
-  {{ end }}
-  {{ with $social.twitter }}
-  <li>
-    <a href="https://twitter.com/{{ . }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-  </li>
-  {{ end }}
-  {{ with $social.zhihu }}
-  <li>
-    <a target="_blank" href="https://www.zhihu.com/people/{{ . }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa  fa-stack-1x fa-inverse">知</i>
-      </span>
-    </a>
-  </li>
-  {{ end }}
-  {{ with $social.weibo }}
-  <li>
-    <a target="_blank" href="http://weibo.com/{{ . }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-  </li>
-  {{ end }}
-  {{ with $social.facebook }}
-  <li>
-    <a target="_blank" href="https://www.facebook.com/{{ . }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-  </li>
-  {{ end }}
-  {{ with $social.github }}
-  <li>
-    <a target="_blank" href="https://github.com/{{ . }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-  </li>
-  {{ end }}
-  {{ with $social.gitlab }}
-  <li>
-    <a target="_blank" href="https://gitlab.com/{{ . }}">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-gitlab fa-stack-1x fa-inverse"></i>
-        </span>
-    </a>
-  </li>
-  {{ end }}
-  {{ with $social.linkedin }}
-  <li>
-    <a target="_blank" href="https://www.linkedin.com/in/{{ . }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-  </li>
-  {{ end }}
+{{- end -}}
+
+{{- range sort $socialList "weight" -}}
+{{ $destination := "" }}
+{{ if .url }}
+{{ $destination = .url | relURL }}
+{{ else if .format }}
+{{ $destination = printf (string .format) .id }}
+{{- end -}}
+<li>
+  <a href="{{ $destination | safeURL }}" {{- if (urls.Parse $destination).Host | or .newtab }} target="_blank" {{- end -}}>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="{{ .icon }} fa-stack-1x fa-inverse">{{- .text -}}</i>
+    </span>
+  </a>
+</li>
+{{- end -}}
+
 </ul>

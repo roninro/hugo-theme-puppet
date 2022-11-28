@@ -88,7 +88,6 @@ avatar = "img/home-bg.jpg"
 bio = "a personal website"
 
 [params.social]
-rss_enable = true
 twitter = "johndoe"
 facebook = "johndoe"
 zhihu = "johndoe"
@@ -96,6 +95,13 @@ weibo = "johndoe"
 github = "johndoe"
 gitlab = "johndoe"
 linkedin = "johndoe"
+rss = true
+[params.social.mastodon]
+weight = 56
+icon = "fab fa-mastodon"
+format = "https://mastodon.social/%v"
+id = "johndoe"
+url = ""
 
 [[params.friends]]
 name = "John Doe"

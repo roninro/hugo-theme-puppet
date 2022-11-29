@@ -307,6 +307,11 @@ weight = 68
 format = "https://kaggle.com/%v"
 icon = "fab fa-kaggle"
 
+[credly]
+ weight = 69
+ format = "https://credly.com/users/%v/badges"
+ icon = "fa-regular fa-certificate"
+
 [phone]
 weight = 98
 format = "tel:%v"

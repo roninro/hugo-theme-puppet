@@ -5,7 +5,8 @@
 [build.environment]
   HUGO_THEME = "repo"
   HUGO_THEMESDIR = "/opt/build"
-  HUGO_VERSION = "0.106.0"
+  HUGO_VERSION = "0.107.0"
+  GO_VERSION = "1.19.3"
 
 [context.production.environment]
   HUGO_BASEURL = "https://hugo-theme-puppet.netlify.app/"

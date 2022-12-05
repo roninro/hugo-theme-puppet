@@ -1,8 +1,12 @@
 baseURL = "http://localhost:1313/subdir"
 title = "Puppet"
 
+# using theme as git clone or submodule (traditional)
 theme = "puppet"
 themesDir = "../.."
+
+# using theme as hugo module (modern)
+# theme = "github.com/roninro/hugo-theme-puppet"
 
 copyright = ""
 paginate = 3

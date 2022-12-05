@@ -1,6 +1,7 @@
 +++
-title = "Puppet - Getting Started"
+title = "Puppet - Getting Started (git clone or submodule)"
 date = 2022-08-09T15:38:30+08:00
+description = "Set up your new hugo site with a git clone of puppet theme"
 header_img = ""
 toc = true
 tags = ["documentation", "guide"]
@@ -44,7 +45,7 @@ git submodule update --init --recursive
 That’s all, Puppet is ready to be used.
 
 
-## Add Config Files
+## Add Config File
 
 For getting started, you can copy the `config.toml` file from the theme's exampleSite directory to the root directory of your site.
 

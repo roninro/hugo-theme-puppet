@@ -8,7 +8,7 @@
 
   {{- else if and $social (ne $value true)  -}}
     {{ $social = merge $social (dict "id" $value) }}
-    
+
   {{- else if $value -}}
   {{- else -}}
   {{ $social = dict }}
@@ -34,7 +34,7 @@
 {{ $destination = printf (string .format) .id }}
 {{- end -}}
 <li>
-  <a href="{{ $destination | safeURL }}" {{- if (urls.Parse $destination).Host | or .newtab }} target="_blank" {{- end -}}>
+  <a rel="me" href="{{ $destination | safeURL }}" {{- if (urls.Parse $destination).Host | or .newtab }} target="_blank" {{- end -}}>
     <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="{{ .icon }} fa-stack-1x fa-inverse">{{- .text -}}</i>
